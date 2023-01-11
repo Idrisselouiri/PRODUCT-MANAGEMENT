@@ -1,0 +1,77 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    border: none;
+    outline: none;
+}
+body{
+    background: #222;
+    color: #fff;
+    
+}
+.container-block{
+    width: 80%;
+    margin: auto;
+}
+.head{
+    margin-top: 10px;
+    text-transform: uppercase;
+    line-height: 35px;
+    font-size: 18px;
+    font-weight: 600;
+    text-align: center;
+}
+.inputs{
+    margin-top: 10px;
+}
+input{
+    width: 100%;
+    height: 30px;
+    background: #111;
+    color: #fff;
+    font-size: 16px;
+    padding: 8px 5px;
+    border-radius: 4px;
+    margin-bottom: 10px;
+}
+.totalePrice input{
+    width: 20%;
+    margin-right: 5px;
+}
+.totalePrice #total{
+    background: rgba(255, 0, 0, 0.6);
+    padding: 5px 4px;
+    color: #fff;
+    border-radius: 4px;
+}
+.totalePrice #total::before{
+    content: 'Total: ';
+}
+button{
+    width: 100%;
+    height: 35px;
+    background: rgb(58, 3, 104);
+    color: #fff;
+    border-radius: 15px;
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+.btnSerach{
+    display: flex;
+    justify-content: space-between;
+}
+.btnSerach button{
+    width: 45%;
+}
+table{
+    width: 100%;
+    margin-top: 10px;
+    text-align: center;
+}
+table th{
+    text-transform: uppercase;
+}
+th,td{
+    padding: 5px;
+}
