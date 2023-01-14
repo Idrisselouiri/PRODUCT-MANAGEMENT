@@ -3,7 +3,18 @@ let taxes = document.getElementById('taxes')
 let ads = document.getElementById('ads')
 let discount = document.getElementById('discount')
 let total = document.getElementById('total')
+let count = document.getElementById('count')
+let category = document.getElementById('category')
+let create = document.getElementById('create')
 
+
+let dataPro;
+if(localStorage.product != null)
+{
+    dataPro =JSON.parse(localStorage.product) 
+}else{
+     dataPro = []
+}
 function getTotal()
 {
     if(price.value != '')
@@ -17,4 +28,18 @@ function getTotal()
         total.innerHTML = "";
     }
     
+}
+create.onclick = function(){
+    let newPro = {
+        price:price.value,
+        taxes:taxes.value,
+        ads: ads.value,
+        discount:discount.value,
+        total:total.innerHTML,
+        count:count.value,
+        category:category.value,
+    }
+    dataPro.push(newPro)
+    localStorage.setItem("product" ,JSON.stringify( dataPro) )
+    console.log(dataPro)
 }
