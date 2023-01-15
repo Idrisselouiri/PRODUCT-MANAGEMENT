@@ -1,3 +1,4 @@
+let title = document.getElementById('title')
 let price = document.getElementById('price')
 let taxes = document.getElementById('taxes')
 let ads = document.getElementById('ads')
@@ -30,7 +31,7 @@ function getTotal()
     
 }
 create.onclick = function(){
-    let newPro = {
+    let newPro = {       
         price:price.value,
         taxes:taxes.value,
         ads: ads.value,
@@ -42,4 +43,15 @@ create.onclick = function(){
     dataPro.push(newPro)
     localStorage.setItem("product" ,JSON.stringify( dataPro) )
     console.log(dataPro)
+    clearData()
+}
+function clearData(){
+        title.value = '' ;
+        price.value = '';
+        taxes.value = '';
+        ads.value = '';
+        discount.value = '';
+        total.innerHTML = '';
+        count.value = '';
+        category.value = '';
 }
