@@ -32,6 +32,7 @@ function getTotal()
 }
 create.onclick = function(){
     let newPro = {       
+        title:title.value,
         price:price.value,
         taxes:taxes.value,
         ads: ads.value,
@@ -54,4 +55,31 @@ function clearData(){
         total.innerHTML = '';
         count.value = '';
         category.value = '';
+}
+let table = "";
+function showData(){
+    for(let i = 0 ; i < dataPro.length; i++)
+    {
+        table += `
+        <tr>
+        <td>${i}</td>
+        <td>${dataPro[i].title}</td>
+        <td>${dataPro[i].price}</td>
+        <td>${dataPro[i].taxes}</td>
+        <td>${dataPro[i].ads}</td>
+        <td>${dataPro[i].discount}</td>
+        <td>${dataPro[i].total}</td>
+        <td>${dataPro[i].category}</td>
+        <td><button>update</button></td>
+        <td><button onclick ='deleteData( ${i} )' id ='delete'>delete</button></td>
+    </tr>
+    `
+    }
+    document.getElementById('tbody').innerHTML = table ;
+}
+showData()
+function deleteData(i){
+dataPro.splice(i,1);
+localStorage.product = JSON.stringify(dataPro);
+showData()
 }
