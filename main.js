@@ -41,6 +41,13 @@ create.onclick = function(){
         count:count.value,
         category:category.value,
     }
+    if(newPro.count > 1){
+        for(let i = 0;i <newPro.count;i++ ){
+            dataPro.push(newPro)
+        }
+    }else{
+        dataPro.push(newPro)
+    }
     dataPro.push(newPro)
     localStorage.setItem("product" ,JSON.stringify( dataPro) )
     clearData()
@@ -75,12 +82,23 @@ function showData(){
         <td><button onclick ='deleteData( ${i} )' id ='delete'>delete</button></td>
     </tr>
     `
-    }   
+    }    
     document.getElementById('tbody').innerHTML = table ;
+    let btnDelete = document.getElementById("deleteAll")
+    if(dataPro.length > 0){
+        btnDelete.innerHTML = `
+        <button onclick = "DeleteAll()">Delete All (${dataPro.length})</button>
+        `
+    }
 }
 showData()
 function deleteData(i){
 dataPro.splice(i,1);
 localStorage.product = JSON.stringify(dataPro);
 showData()
+}
+function DeleteAll(){
+    localStorage.clear()
+    dataPro.splice(0)
+    showData()
 }
