@@ -43,8 +43,8 @@ create.onclick = function(){
     }
     dataPro.push(newPro)
     localStorage.setItem("product" ,JSON.stringify( dataPro) )
-    console.log(dataPro)
     clearData()
+    showData()
 }
 function clearData(){
         title.value = '' ;
@@ -56,12 +56,13 @@ function clearData(){
         count.value = '';
         category.value = '';
 }
-let table = "";
+
 function showData(){
+    let table = "";
     for(let i = 0 ; i < dataPro.length; i++)
     {
         table += `
-        <tr>
+    <tr>
         <td>${i}</td>
         <td>${dataPro[i].title}</td>
         <td>${dataPro[i].price}</td>
@@ -74,7 +75,7 @@ function showData(){
         <td><button onclick ='deleteData( ${i} )' id ='delete'>delete</button></td>
     </tr>
     `
-    }
+    }   
     document.getElementById('tbody').innerHTML = table ;
 }
 showData()
