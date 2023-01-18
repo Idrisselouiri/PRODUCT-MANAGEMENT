@@ -1,13 +1,14 @@
-let title = document.getElementById('title')
-let price = document.getElementById('price')
-let taxes = document.getElementById('taxes')
-let ads = document.getElementById('ads')
-let discount = document.getElementById('discount')
-let total = document.getElementById('total')
-let count = document.getElementById('count')
-let category = document.getElementById('category')
-let create = document.getElementById('create')
-
+let title = document.getElementById('title');
+let price = document.getElementById('price');
+let taxes = document.getElementById('taxes');
+let ads = document.getElementById('ads');
+let discount = document.getElementById('discount');
+let total = document.getElementById('total');
+let count = document.getElementById('count');
+let category = document.getElementById('category');
+let create = document.getElementById('create');
+let mode = "create";
+let tmp ;
 
 let dataPro;
 if(localStorage.product != null)
@@ -41,12 +42,20 @@ create.onclick = function(){
         count:count.value,
         category:category.value,
     }
-    if(newPro.count > 1){
-        for(let i = 0;i <newPro.count;i++ ){
-            dataPro.push(newPro)
-        }
+    if(mode === "create"){
+        if(newPro.count > 1){
+            for(let i = 0;i <newPro.count;i++ ){
+             dataPro.push(newPro)
+        }   
     }else{
         dataPro.push(newPro)
+    }
+
+    }else{
+        dataPro[ tmp] = newPro;
+        mode = "create";
+        create.innerHTML = "Create"
+        count.style.display = "block"
     }
     dataPro.push(newPro)
     localStorage.setItem("product" ,JSON.stringify( dataPro) )
@@ -78,7 +87,7 @@ function showData(){
         <td>${dataPro[i].discount}</td>
         <td>${dataPro[i].total}</td>
         <td>${dataPro[i].category}</td>
-        <td><button>update</button></td>
+        <td><button onclick ='updateData( ${i} )'>update</button></td>
         <td><button onclick ='deleteData( ${i} )' id ='delete'>delete</button></td>
     </tr>
     `
@@ -101,4 +110,20 @@ function DeleteAll(){
     localStorage.clear()
     dataPro.splice(0)
     showData()
+}
+function updateData(i){
+    title.value = dataPro[i].title;
+    price.value = dataPro[i].price;
+    taxes.value = dataPro[i].taxes;
+    ads.value = dataPro[i].ads;
+    discount.value = dataPro[i].discount;
+    count.style.display = "none";
+    getTotal();
+    create.innerHTML = "update"
+    mode = "update"
+    tmp = i;
+    scroll({
+        top: 0,
+        behavior:'smooth',
+    })
 }
