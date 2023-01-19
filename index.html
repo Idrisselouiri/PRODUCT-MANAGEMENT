@@ -31,13 +31,15 @@
 
         <div class="outputs">
             <div class="SearchBlock">
-                     <input type="text" id="Search" placeholder="Search">
+                     <input onkeyup="searchData(this.value)" type="text" id="Search" placeholder="Search">
                 <div class="btnSerach">
-                    <button id="searchByTitle" type="submit">Search By Title</button>
-                    <button id="searchByTitle" type="submit">Search By Title</button>
+                    <button onclick="getSearchMode(this.id)" id="searchByTitle" type="submit">Search By Title</button>
+                    <button onclick="getSearchMode(this.id)" id="searchBycategory" type="submit">Search By CATEGORY</button>
                 </div>
             </div>
-            <div id="deleteAll"></div>
+            <div id="deleteAll">
+                
+            </div>
             <table>
                     <tr>
                      <th>id</th>
